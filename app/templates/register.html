@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Registro{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Registro</h5>
+                    <form method="POST" action="{{ url_for('home_bp.register') }}">
+                        <!-- Nombres -->
+                        <div class="form-group">
+                            <label for="inputNombres">Nombres</label>
+                            <input type="text" class="form-control" id="inputNombres" name="nombres" required>
+                        </div>
+                        <!-- Apellido Paterno -->
+                        <div class="form-group">
+                            <label for="inputApellidoPaterno">Apellido Paterno</label>
+                            <input type="text" class="form-control" id="inputApellidoPaterno" name="apellido_paterno"
+                                required>
+                        </div>
+                        <!-- Apellido Materno -->
+                        <div class="form-group">
+                            <label for="inputApellidoMaterno">Apellido Materno</label>
+                            <input type="text" class="form-control" id="inputApellidoMaterno" name="apellido_materno"
+                                required>
+                        </div>
+                        <!-- Fecha de Nacimiento -->
+                        <div class="form-group">
+                            <label for="inputFechaNacimiento">Fecha de Nacimiento</label>
+                            <input type="date" class="form-control" id="inputFechaNacimiento" name="fecha_nacimiento"
+                                required>
+                        </div>
+                        <!-- Usuario -->
+                        <div class="form-group">
+                            <label for="inputUsuario">Usuario</label>
+                            <input type="text" class="form-control" id="inputUsuario" name="usuario" required>
+                        </div>
+                        <!-- Correo -->
+                        <div class="form-group">
+                            <label for="inputCorreo">Correo</label>
+                            <input type="email" class="form-control" id="inputCorreo" name="correo" required>
+                        </div>
+                        <!-- Contraseña -->
+                        <div class="form-group">
+                            <label for="inputContrasena">Contraseña</label>
+                            <input type="password" class="form-control" id="inputContrasena" name="contrasena" required>
+                        </div>
+                        <!-- Botón de registro -->
+                        <button type="submit" class="btn btn-success">Registrarse</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if mensaje %}
+        <input type="hidden" id="mensaje" value="{{ mensaje | escape }}">
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block custom_scripts %}
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+{% endblock %}

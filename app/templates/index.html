@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Página de Inicio{% endblock %}
+
+{% block content %}
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{{ url_for('static', filename='images/imagen1.png') }}" class="d-block w-100" alt="Urna de votación">
+        </div>
+        <div class="carousel-item">
+            <img src="{{ url_for('static', filename='images/imagen2.jpg') }}" class="d-block w-100" alt="Fechas de las elecciones">
+        </div>
+    </div>
+</div>
+
+<!-- Botón para ir a votar -->
+<div class="text-center mt-4">
+    <a href="{{ url_for('home_bp.seleccionar_eleccion_votacion') }}" class="btn btn-primary">Ir a votar</a>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Listas de Elecciones activas{% endblock %}
+
+{% block content %}
+    <h1>Lista de Elecciones activas</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Estado</th>
+                <th>Propuestas</th>
+                <th>Candidatos</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for lista in listas %}
+            <tr>
+                <td>{{ lista.id_lista }}</td>
+                <td>{{ lista.estado }}</td>
+                <td>
+                    <ul>
+                        {% for propuesta in lista.propuestas %}
+                            <li>{{ propuesta.descripcion }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        {% for candidato in lista.candidatos %}
+                            <li>{{ candidato.nombre }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Elegir una elección</h2>
+    <form action="/VerCandidatos" method="POST">
+        <label for="eleccion">Elige una elección:</label>
+        <select id="eleccion" name="eleccion_id">
+            {% for eleccion in elecciones %}
+            <option value="{{ eleccion.id_eleccion }}">{{ eleccion.descripcion }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Ir a la elección</button>
+    </form>
+{% endblock %}

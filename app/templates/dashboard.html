@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome, {{ elector.nombres }}{% endblock %}
+
+{% block content %}
+
+<p>Hola, ¿Que tal el dia?</p>
+
+<p>Nombre: {{ elector.nombres }}</p>
+<p>Apellido: {{ elector.apellido_paterno }} {{ elector.apellido_materno }} </p>
+<p>Correo: {{ elector.correo }}</p>
+
+<a href="{{ url_for('home_bp.logout') }}">Logout</a>
+{% if voto %}
+<p>Ya has votado</p>
+{% else %}
+<div class="text-center mt-4">
+    <a href="{{ url_for('home_bp.seleccionar_eleccion_votacion') }}" class="btn btn-primary">Ir a votar</a>
+</div>
+{% endif %}
+{% endblock %}

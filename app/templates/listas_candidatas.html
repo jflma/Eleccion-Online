@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Detalles de la Elección{% endblock %}
+
+{% block content %}
+    <h2>Candidatos</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Candidato</th>
+                <th>Lista</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for candidato in data %}
+            <tr>
+                <td>{{ candidato.Candidato }}</td>
+                <td>{{ candidato.Lista }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('home_bp.listar_elecciones') }}" class="btn btn-primary">Ir a Elecciones Activas</a>
+
+{% endblock %}
